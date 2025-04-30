@@ -6,7 +6,51 @@
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-    <link rel='icon' type='image/x-icon' href='/img/favicon.ico'>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
   </head>
-  <body></body>
+  <body>
+    <nav>
+      <img src="img/calcIcon.jpg" href = "index.html" />
+      <div class="navLinks">
+        <a class="sideLink" href="tempPage.html">How It's Made</a>
+        <a class="sideLink" href="tempPage.html">Credits</a>
+        <a class="sideLink" href="tempPage.html">More Projects</a>
+      </div>
+    </nav>
+    <div class="display">
+      <div class="numDisplay">
+        <p class = "shower">ヽ(´▽`)/</p>
+      </div>
+      <div class="numButtons">
+        <div class="row top">
+          <button class="clearS">C</button>
+          <button class="clearL" onclick="clearAll()">CE</button>
+        </div>
+        <div class="row one">
+          <button class="seven" onclick="displayer(`7`)">7</button>
+          <button class="eight" onclick="displayer(`8`)">8</button>
+          <button class="nine" onclick="displayer(`9`)">9</button>
+          <button class="divider" onclick="displayer(` / `)">÷</button>
+        </div>
+        <div class="row two">
+          <button class="four" onclick="displayer(`4`)">4</button>
+          <button class="five" onclick="displayer(`5`)">5</button>
+          <button class="six" onclick="displayer(`6`)">6</button>
+          <button class="multiplier" onclick="displayer(` * `)">x</button>
+        </div>
+        <div class="row three">
+          <button class="one" onclick="displayer(`1`)">1</button>
+          <button class="two" onclick="displayer(`2`)">2</button>
+          <button class="three" onclick="displayer(`3`)">3</button>
+          <button class="adder" onclick="displayer(` + `)">+</button>
+        </div>
+        <div class="row four">
+          <button class="zero" onclick="displayer(`0`)">0</button>
+          <button class="decimal" onclick="displayer(`.`)">.</button>
+          <button class="equal" onclick="prompter()">=</button>
+          <button class="subtractor" onclick="displayer(` - `)">÷</button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

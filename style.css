@@ -1,0 +1,106 @@
+* {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: 800;
+    border-radius: 8px;
+}
+
+body {
+   background-image: url("img/mathBack.jpg");
+   margin: 0;
+}
+
+nav {
+    background-color: black;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 0;
+    border-bottom: 2px solid  rgb(53, 255, 46);
+}
+
+img {
+    margin: 5px;
+    height: 60px;
+    width: 45px;
+}
+
+.navLinks {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    color: rgb(53, 255, 46);
+    margin: 5px;
+}
+
+.sideLink {
+    display: flex;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 20px 30px;
+    justify-content: space-around;
+    color: rgb(53, 255, 46);
+}
+
+.sideLink:hover {
+    text-decoration: underline;
+    color: rgb(114, 255, 109);
+}
+
+.display {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin: 20px 450px;
+    background-image: linear-gradient(to top right, rgb(70, 70, 70) , rgb(112, 112, 112));
+    border: 5px solid rgb(44, 44, 44);
+    border-radius: 15px;
+    padding: 20px 0px;
+    flex: auto;
+    flex-direction: column;
+}
+
+.numDisplay {
+    background-color: black;
+    padding: 0px;
+    margin: 10px;
+}
+
+.shower {
+    margin: 15px;
+    color: rgb(53, 255, 46);
+    font-size: 45px;
+}
+
+.numButtons {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    padding: 15px;
+    font-size: 40px;
+    box-shadow: 5px 5px rgb(44, 44, 44);
+    margin: 0px;
+}
+
+.clearS,
+.clearL {
+    padding : 6px 12px;
+    font-size: 22px;
+    background-color: rgb(252, 202, 197);
+}
+
+.clearS:hover,
+.clearL:hover {
+    background-color: rgb(238, 174, 169);
+}
+
+button:hover {
+    background-color: rgb(216, 215, 215); 
+}
+
+.row {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px;
+}
