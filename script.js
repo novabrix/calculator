@@ -1,16 +1,6 @@
 "use strict";
-/* const values = [1, 2, 3, 4];
-const smallValues = [24, 7]; */
-let total;
-const shower = document.querySelector('.shower');
+const shower = document.querySelector(".shower");
 let oneTimeUse = true;
-
-function prompter() {
-  const numOne = Number(prompt("Enter in the first number!"));
-  const operand = prompt("Enter in the operand!")
-  const numTwo = Number(prompt("Enter in the second number!"));
-  calculator(numOne, operand, numTwo);
-}
 
 function displayer(value) {
   if (oneTimeUse === true || shower.textContent === "0") {
@@ -19,26 +9,34 @@ function displayer(value) {
     console.log(`one time`);
   }
   console.log(value);
-  return shower.textContent = `${shower.textContent + value}`
+  return (shower.textContent = `${shower.textContent + value}`);
 }
 
-function clearAll () {
-  return shower.textContent = "0"
+function clearAll() {
+  return (shower.textContent = "0");
 }
 
-function calculator(a, operator, b) {
+function vision() {
+  let refined = shower.textContent.split(" ");
+  calculator(refined);
+}
+
+function calculator(refinedSQ) {
+  let a = Number(refinedSQ[0]);
+  let operator = refinedSQ[1];
+  let b = Number(refinedSQ[2]);
   if (operator === "+") {
-    let refined = adder(a, b);
-    console.log(refined);
+    let refinedCu = adder(a, b);
+    theShower(refinedCu);
   } else if (operator === "-") {
-    let refined = subtractor(a, b);
-    console.log(refined);
+    let refinedCu = subtractor(a, b);
+    theShower(refinedCu);
   } else if (operator === "*") {
-    let refined = multiplier(a, b);
-    console.log(refined);
+    let refinedCu = multiplier(a, b);
+    theShower(refinedCu);
   } else if (operator === "/") {
-    let refined = divider(a, b);
-    console.log(refined);
+    let refinedCu = divider(a, b);
+    theShower(refinedCu);
   } else {
     console.log(`Error!`);
   }
@@ -59,6 +57,12 @@ function multiplier(a, b) {
 
 function divider(a, b) {
   return a / b;
+}
+
+// REPETITIVE FUNCTIONS
+
+function theShower (value) {
+  shower.textContent = value;
 }
 
 /* function adder(arr) {
