@@ -1,15 +1,44 @@
 "use strict";
 const shower = document.querySelector(".shower");
-let oneTimeUse = true;
+const body = document.querySelector(".display");
+let resetMe = true;
+let a, operator, b;
+let refined, refinedCu;
 
 function displayer(value) {
-  if (oneTimeUse === true || shower.textContent === "0") {
+  // If number typed after answer is an operator, don't wipe the slate clean
+  if (
+    value === " * " ||
+    value === " / " ||
+    value === " + " ||
+    value === " - "
+  ) {
+    console.log(`No Reset`);
+    resetMe = false;
+  }
+  // If resetable, reset
+  if (resetMe === true || shower.textContent === "0") {
     shower.textContent = "";
-    oneTimeUse = false;
+    resetMe = false;
     console.log(`one time`);
   }
-  console.log(value);
-  return (shower.textContent = `${shower.textContent + value}`);
+  // Show the new number
+  shower.textContent = `${shower.textContent + value}`;
+  refined = shower.textContent.split(" ");
+  console.log(`Refined: ${refined}`);
+  // If there are four numbers, run this to get rid of them
+  if (refined.length >= 4) {
+    vision();
+  }
+}
+
+function clearSmall() {
+  let holder = shower.textContent.split(" ");
+  holder.pop("");
+  let holderTwo = String(holder);
+  let holderThree = holderTwo.replace(",", " ");
+  console.log(holderThree);
+  return shower.textContent = holderThree;
 }
 
 function clearAll() {
@@ -17,30 +46,58 @@ function clearAll() {
 }
 
 function vision() {
-  let refined = shower.textContent.split(" ");
   calculator(refined);
 }
 
 function calculator(refinedSQ) {
-  let a = Number(refinedSQ[0]);
-  let operator = refinedSQ[1];
-  let b = Number(refinedSQ[2]);
+  console.log(`RefinedSQ: ${refinedSQ}`);
+  a = Number(refinedSQ[0]);
+  operator = refinedSQ[1];
+  b = Number(refinedSQ[2]);
   if (operator === "+") {
-    let refinedCu = adder(a, b);
-    theShower(refinedCu);
+    refinedCu = adder(a, b);
   } else if (operator === "-") {
-    let refinedCu = subtractor(a, b);
-    theShower(refinedCu);
+    refinedCu = subtractor(a, b);
   } else if (operator === "*") {
-    let refinedCu = multiplier(a, b);
-    theShower(refinedCu);
+    refinedCu = multiplier(a, b);
   } else if (operator === "/") {
-    let refinedCu = divider(a, b);
-    theShower(refinedCu);
+    refinedCu = divider(a, b);
   } else {
     console.log(`Error!`);
   }
+  if (refinedCu === Infinity) {
+    theShower("Nope.");
+  } else {
+    refinedCu = Math.round(refinedCu * 100000) / 100000;
+    theShower(refinedCu);
+  }
+  resetMe = true;
 }
+
+const keyboardable = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "*",
+  "/",
+  "+",
+  "-",
+  ".",
+  "=",
+];
+
+/* body.addEventListener(keypress, function (e) {
+  let keyCheck = keyboardable.includes(e.key);
+  console.log(`checked : ${keyCheck}`);
+  
+}); */
 
 // FUNCTION CALC
 function adder(a, b) {
@@ -61,30 +118,6 @@ function divider(a, b) {
 
 // REPETITIVE FUNCTIONS
 
-function theShower (value) {
+function theShower(value) {
   shower.textContent = value;
 }
-
-/* function adder(arr) {
-  return arr.reduce(function (total, value) {
-    return (total = total + value);
-  }, 0);
-}
-
-function subtractor(arr) {
-  return arr.reduce(function (total, value) {
-    return (total = total - value);
-  }, arr[0] * 2);
-}
-
-function multiplier(arr) {
-  return arr.reduce(function (total, value) {
-    return (total = total * value);
-  }, 1);
-}
-
-function divider(arr) {
-  return arr.reduce(function (total, value) {
-    return (total = total / value);
-  }, (arr[0] * arr[0]));
-} */
