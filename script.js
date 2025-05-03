@@ -1,6 +1,6 @@
 "use strict";
 const shower = document.querySelector(".shower");
-const body = document.querySelector(".display");
+const body = document.querySelector("body");
 let resetMe = true;
 let a, operator, b;
 let refined, refinedCu;
@@ -38,7 +38,7 @@ function clearSmall() {
   let holderTwo = String(holder);
   let holderThree = holderTwo.replace(",", " ");
   console.log(holderThree);
-  return shower.textContent = holderThree;
+  return (shower.textContent = holderThree);
 }
 
 function clearAll() {
@@ -74,7 +74,10 @@ function calculator(refinedSQ) {
   resetMe = true;
 }
 
-const keyboardable = [
+const keyboard = [
+  "C",
+  "E",
+  "Enter",
   "0",
   "1",
   "2",
@@ -85,36 +88,65 @@ const keyboardable = [
   "7",
   "8",
   "9",
-  "*",
-  "/",
-  "+",
-  "-",
+  " * ",
+  " / ",
+  " + ",
+  " - ",
   ".",
-  "=",
 ];
 
-/* body.addEventListener(keypress, function (e) {
-  let keyCheck = keyboardable.includes(e.key);
-  console.log(`checked : ${keyCheck}`);
-  
-}); */
+body.addEventListener("keydown", function (e) {
+  let keyCheck = keyboard.includes(e.key);
+  console.log(`KeyCheck: ${keyCheck}`);
+  console.log(`Key Pressed: ${e.key}`);
+  if (keyCheck = "true") {
+    if (e.key === "C") {
+      clearSmall();
+    } else if (e.key === "E") {
+      clearAll();
+    } else if (e.key === "Enter") {
+      vision();
+    } else if (e.key === "0") {
+      displayer("0");
+    } else if (e.key === "1") {
+      displayer("1");
+    } else if (e.key === "2") {
+      displayer("2");
+    } else if (e.key === "3") {
+      displayer("3");
+    } else if (e.key === "4") {
+      displayer("4");
+    } else if (e.key === "5") {
+      displayer("5");
+    } else if (e.key === "6") {
+      displayer("6");
+    } else if (e.key === "7") {
+      displayer("7");
+    } else if (e.key === "8") {
+      displayer("8");
+    } else if (e.key === "9") {
+      displayer("9");
+    } else if (e.key === "") {
+      displayer("one");
+    } else if (e.key === "*") {
+      displayer(" * ");
+    } else if (e.key === "/") {
+      displayer(" / ");
+    } else if (e.key === "+") {
+      displayer(" + ");
+    } else if (e.key === "-") {
+      displayer(" - ");
+    } else {
+      console.log(`Ran, but nothing worked!`);
+    }
+  }
+});
 
 // FUNCTION CALC
-function adder(a, b) {
-  return a + b;
-}
-
-function subtractor(a, b) {
-  return a - b;
-}
-
-function multiplier(a, b) {
-  return a * b;
-}
-
-function divider(a, b) {
-  return a / b;
-}
+let adder = (a, b) => a + b;
+let subtractor = (a, b) => a - b;
+let multiplier = (a, b) => a * b;
+let divider = (a, b) => a / b;
 
 // REPETITIVE FUNCTIONS
 

@@ -69,6 +69,7 @@ img {
     margin: 15px;
     color: rgb(53, 255, 46);
     font-size: 45px;
+    word-break: break-all;
 }
 
 .numButtons {
